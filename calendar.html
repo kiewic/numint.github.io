@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        body > div {
+            display: flex;
+            flex-direction: column;
+            vertical-align: middle;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+            border: 3px solid hsla(52, 100%, 20%, 1.0);
+            background-color: #FFDC00;
+            text-align: center;
+            color: hsla(52, 100%, 20%, 1.0);
+            font-size: 35px;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        body > div > div:nth-child(2) {
+            font-size: 60%;
+            color: #827b50;
+            margin-top: 15px;
+        }
+
+        .weekend {
+            color: #0e3e14;
+            background-color: #2ECC40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weekend">
+        <div>Sunday</div>
+        <div>วันอาทิตย์</div>
+    </div>
+    <div>
+        <div>Monday</div>
+        <div>วันจันทร์</div>
+    </div>
+    <div>
+        <div>Tuesday</div>
+        <div>วันอังคาร</div>
+    </div>
+    <div>
+        <div>Wednesday</div>
+        <div>วันพุธ</div>
+    </div>
+    <div>
+        <div>Thursday</div>
+        <div>วันพฤหัสบดี</div>
+    </div>
+    <div>
+        <div>Friday</div>
+        <div>วันศุกร์</div>
+    </div>
+    <div class="weekend">
+        <div>Saturday</div>
+        <div>วันเสาร์</div>
+    </div>
+    <button>Next</button>
+    <script>
+        let boxes = document.querySelectorAll('body > div');
+        for (const box of boxes) {
+            box.style.display = 'none';
+        }
+        let current = 0;
+        boxes[current].style.display = 'flex';
+        document.querySelector('button').addEventListener('click', function () {
+            boxes[current % boxes.length].style.display = 'none';
+            boxes[(current + 1) % boxes.length].style.display = 'flex';
+            current = current + 1;
+        });
+    </script>
+</body>
+
+</html>
